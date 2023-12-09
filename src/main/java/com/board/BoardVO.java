@@ -1,15 +1,8 @@
 package com.board;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class BoardVO {
-    private int seq;
-    private String title;
-    private String writer;
-    private String content;
-    private Date regdate;
-    private int cnt;
-
     public int getSeq() {
         return seq;
     }
@@ -18,43 +11,90 @@ public class BoardVO {
         this.seq = seq;
     }
 
-    public String getTitle() {
-        return title;
+    private int seq;
+    private String mname;
+    private String fname;
+    private String picture;
+    private String kind;
+    private String pnumber;
+    private String comeday;
+    private String byeday;
+    private java.sql.Timestamp regdate;
+    private String contents;
+
+
+
+    public String getContents() {
+        return contents;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setContents(String contents) {
+        this.contents = contents;
     }
 
-    public String getWriter() {
-        return writer;
+    public String getByeday() {
+        return byeday;
     }
 
-    public void setWriter(String writer) {
-        this.writer = writer;
+    public void setByeday(String byeday) {
+        this.byeday = byeday;
     }
 
-    public String getContent() {
-        return content;
+    public String getComeday() {
+        return comeday;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setComeday(String comeday) {
+        this.comeday = comeday;
     }
 
-    public Date getRegdate() {
+    public Timestamp getRegdate() {
         return regdate;
     }
 
-    public void setRegdate(Date regdate) {
+
+
+    public String getPnumber() {
+        return pnumber;
+    }
+
+    public void setPnumber(String pnumber) {
+        this.pnumber = pnumber;
+    }
+
+    public String getKind() {
+        return kind;
+    }
+
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getMname() {
+        return mname;
+    }
+
+    public void setMname(String mname) {
+        this.mname = mname;
+    }
+
+    public void setRegdate(java.sql.Timestamp regdate) {
         this.regdate = regdate;
-    }
-
-    public int getCnt() {
-        return cnt;
-    }
-
-    public void setCnt(int cnt) {
-        this.cnt = cnt;
     }
 }

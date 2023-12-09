@@ -1,7 +1,5 @@
 package com.board;
 
-import com.board.BoardDAO;
-import com.board.BoardVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +9,7 @@ import java.util.List;
 public class BoardService {
     @Autowired
     BoardDAO boardDAO;
+
     public int insertBoard(BoardVO vo) {
         return boardDAO.insertBoard(vo);
     }
@@ -22,12 +21,12 @@ public class BoardService {
     public int updateBoard(BoardVO vo) {
         return boardDAO.updateBoard(vo);
     }
-    public BoardVO getBoard(int seq){
+
+    public BoardVO getBoard(int seq) {
         return boardDAO.getBoard(seq);
     }
 
     public List<BoardVO> getBoardList() {
-
         return boardDAO.getBoardList();
     }
 }

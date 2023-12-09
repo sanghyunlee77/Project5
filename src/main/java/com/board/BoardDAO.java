@@ -1,6 +1,6 @@
 package com.board;
 
-import com.board.BoardVO;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -8,56 +8,90 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
 public class BoardDAO {
 
-    @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public int insertBoard(BoardVO data){
-        String sql = "Insert into BOARD (title, writer, content) values("
-                +"'"+data.getTitle()+"',"
-                +"'"+data.getWriter()+"',"
-                +"'"+data.getContent()+"')";
-        return jdbcTemplate.update(sql);
+    @Autowired
+    SqlSession sqlSession;
 
+    public int insertBoard(BoardVO data) {
+        String sql = "INSERT INTO PETDATA (mname, fname, picture, kind, pnumber, comeday, byeday, regdate, contents) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        return jdbcTemplate.update(sql,
+                data.getMname(),
+                data.getFname(),
+                data.getPicture(),
+                data.getKind(),
+                data.getPnumber(),
+                data.getComeday(),
+                data.getByeday(),
+                data.getRegdate(),
+                data.getContents()
+        );
     }
 
     // 글 삭제
     public int deleteBoard(int seq) {
-        String sql = "delete from BOARD where seq = "+ seq;
-        return jdbcTemplate.update(sql);
+        String sql = "DELETE FROM PETDATA WHERE seq = ?";
+        return jdbcTemplate.update(sql, seq);
     }
+
     public int updateBoard(BoardVO vo) {
-        String sql = "update BOARD set title='"+vo.getTitle()+"'/"
-                +"title='"+vo.getTitle()+"',"
-                +"writer'"+vo.getWriter()+"',"
-                +"content'"+vo.getContent() + "' where seq =" + vo.getSeq();
-        return jdbcTemplate.update(sql);
+        String sql = "UPDATE PETDATA SET "
+                + "mname = ?, "
+                + "fname = ?, "
+                + "picture = ?, "
+                + "kind = ?, "
+                + "pnumber = ?, "
+                + "comeday = ?, "
+                + "byeday = ?, "
+                + "regdate = ?, "
+                + "contents = ? "
+                + "WHERE seq = ?";  // Assuming 'seq' is the primary key
+
+        return jdbcTemplate.update(sql,
+                vo.getMname(),
+                vo.getFname(),
+                vo.getPicture(),
+                vo.getKind(),
+                vo.getPnumber(),
+                vo.getComeday(),
+                vo.getByeday(),
+                vo.getRegdate(),
+                vo.getContents(),
+                vo.getSeq()
+        );
     }
+
+    public List<BoardVO> getBoardList() {
+        return sqlSession.selectList("Board.getBoardList");
+    }
+
+    public BoardVO getBoard(int seq) {
+        return sqlSession.selectOne("Board.getBoard", seq);
+    }
+
     class BoardRowMapper implements RowMapper<BoardVO> {
 
         @Override
         public BoardVO mapRow(ResultSet rs, int rowNum) throws SQLException {
             BoardVO vo = new BoardVO();
             vo.setSeq(rs.getInt("seq"));
-            vo.setTitle(rs.getString("title"));
-            vo.setContent(rs.getString("content"));
-            vo.setWriter(rs.getString("writer"));
-            vo.setRegdate(rs.getDate("regdate"));
+            vo.setMname(rs.getString("mname"));
+            vo.setFname(rs.getString("fname"));
+            vo.setPicture(rs.getString("picture"));
+            vo.setKind(rs.getString("kind"));
+            vo.setPnumber(rs.getString("pnumber"));
+            vo.setComeday(rs.getString("comeday"));
+            vo.setByeday(rs.getString("byeday"));
+            vo.setRegdate(rs.getTimestamp("regdate")); // Use getTimestamp directly
+            vo.setContents(rs.getString("contents"));
             return vo;
         }
-    }
-
-    public BoardVO getBoard(int seq){
-        String sql = "select * from BOARD where seq = "+seq;
-        return jdbcTemplate.queryForObject(sql,new BoardRowMapper());
-    }
-
-    public List<BoardVO> getBoardList(){
-        String sql = "select * from BOARD order by regdate desc";
-        return jdbcTemplate.query(sql,new BoardRowMapper());
     }
 }
