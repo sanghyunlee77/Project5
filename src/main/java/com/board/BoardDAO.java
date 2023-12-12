@@ -19,20 +19,9 @@ public class BoardDAO {
     @Autowired
     SqlSession sqlSession;
 
-    public int insertBoard(BoardVO data) {
-        String sql = "INSERT INTO PETDATA (mname, fname, picture, kind, pnumber, comeday, byeday, regdate, contents) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        return jdbcTemplate.update(sql,
-                data.getMname(),
-                data.getFname(),
-                data.getPicture(),
-                data.getKind(),
-                data.getPnumber(),
-                data.getComeday(),
-                data.getByeday(),
-                data.getRegdate(),
-                data.getContents()
-        );
+    public int insertBoard(BoardVO vo) {
+        int result = sqlSession.insert("Board.insertBoard", vo);
+        return result;
     }
 
     // 글 삭제

@@ -13,7 +13,7 @@
     <table id ="edit">
         <tr><td>Title:</td><td><input type="text" name="title"/></td></tr>
         <tr><td>Writer:</td><td><input type="text" name="writer"/></td></tr>
-        <tr><td>Content:</td><td><textarea cols="50" rows="5" name="content"></textarea></td></tr>
+        <tr><td>Content:</td><td><textarea cols="50" rows="5" name="contents"></textarea></td></tr>
         <tr><td>mname:</td><td><input type="text" name="mname"/></td></tr>
         <tr><td>fname:</td><td><input type="text" name="fname"/></td></tr>
         <tr><td>picture:</td><td><input type="text" name="picture"/></td></tr>
@@ -21,7 +21,6 @@
         <tr><td>pnumber:</td><td><input type="text" name="pnumber"/></td></tr>
         <tr><td>comeday:</td><td><input type="text" name="comeday"/></td></tr>
         <tr><td>byeday:</td><td><input type="text" name="byeday"/></td></tr>
-        <tr><td>regdate:</td><td><input type="text" name="regdate"/></td></tr>
     </table>
     <button type="button" onclick="location.href='list'">목록보기</button>
     <button type="submit">등록하기</button>

@@ -12,12 +12,18 @@ public class BoardController {
 
     @Autowired
     BoardService boardService;
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String home() {
+        return "index";  // 'index'는 홈 페이지의 뷰 이름이어야 합니다.
+    }
+
 
     @RequestMapping(value = "/board/list")
-    public String boardlist(Model model){
-        model.addAttribute("list",boardService.getBoardList());
+    public String boardList(Model model) {
+        model.addAttribute("list", boardService.getBoardList());
         return "list";
     }
+
     @RequestMapping(value = "/board/add",method = RequestMethod.GET)
     public String addPost(){
         return "addpostform";
@@ -48,8 +54,9 @@ public class BoardController {
 
     @RequestMapping(value = "/board/deleteok/{seq}",method = RequestMethod.GET)
     public String deletePostOk(@PathVariable("seq") int seq){
-        if(boardService.deleteBoard(seq)==0)
-            System.out.println("데이터 삭제 실패");
+        int result = boardService.deleteBoard(seq);
+        if(result > 0)
+            return "redirect:/board/list";
         else
             System.out.println("데이터 삭제 성공!!");
         return "redirect:../list";

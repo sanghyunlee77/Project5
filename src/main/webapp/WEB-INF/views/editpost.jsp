@@ -8,10 +8,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Add/Edit Post</title>
-</head>
+</head>	
 <body>
 
 <h1>Add/Edit Post</h1>
+<%--@elvariable id="u" type="com"--%>
 <form:form modelAttribute="u" method="POST" action="../editok">
 	<form:hidden path="seq"/>
 	<table id="edit">
