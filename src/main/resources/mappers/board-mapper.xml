@@ -2,16 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Pet">
     <insert id="insertPet">
-        insert into PETDATA (title, writer, content)
+        insert into PETDATA (mname, pname, kind, pnumber, comeday, contents)
         values
-        (#{title} , #{writer} , #{content})
+        (#{mname} , #{pname} ,#{kind} , #{pnumber} , #{comeday}, #{contents})
     </insert>
     <update id="updatePet">
-        update BOARD
-        set title=#{title}, content=#{content}, writer=#{writer}
+        update PETDATA
+        set mname=#{mname}, pname=#{pname}, kind=#{kind}, pnumber=#{pnumber}, comeday=#{comeday}, byeday =#{byeday}, contents#{contents}
         where seq=#{seq}
     </update>
-    <delete id="deleteBoard">
+    <delete id="deletePet">
         delete from PETDATA where seq=#{id}
     </delete>
     <select id="getPet" resultType="pet">

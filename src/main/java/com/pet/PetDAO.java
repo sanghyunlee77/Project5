@@ -11,6 +11,24 @@ public class PetDAO {
     @Autowired
     SqlSession sqlSession;
 
+    public int insertPet(PetVO vo){
+        int count = sqlSession.insert("Pet.insertPet", vo);
+        return count;
+    }
+    public int deletePet(int seq){
+        int count = sqlSession.delete("Pet.insertPet", seq);
+        return count;
+    }
+    public int updatePet(PetVO vo){
+        int count = sqlSession.update("Pet.insertPet", vo);
+        return count;
+    }
+
+    public PetVO getPet(int seq){
+        PetVO one = sqlSession.selectOne("Pet.getPet",seq);
+        return one;
+    }
+
     public List<PetVO> getPetList(){
         List<PetVO> list = sqlSession.selectList("Pet.getPetList");
         return list;

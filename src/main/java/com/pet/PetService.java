@@ -12,4 +12,16 @@ public class PetService {
     public List<PetVO> getPetList(){
         return petDAO.getPetList();
     }
+    public PetVO getPet(int seq){
+        return petDAO.getPet(seq);
+    }
+    public int insertPet(PetVO vo){
+        return petDAO.insertPet(vo);
+    }
+    public int deletePet(int seq){
+        return petDAO.deletePet(seq);
+    }
+    public int updatePet(PetVO vo){
+        return petDAO.updatePet(vo);
+    }
 }
