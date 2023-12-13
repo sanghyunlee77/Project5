@@ -24,6 +24,7 @@
             <th>종</th>
             <th>휴대전화 번호</th>
             <th>입원날짜</th>
+            <th>퇴원날짜</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -36,6 +37,7 @@
                 <td>${u.getKind()}</td>
                 <td>${u.getPnumber()}</td>
                 <td>${u.getComeday()}</td>
+                <td>${u.getByeday()}</td>
                 <td><a href="editpost/${u.getSeq()}">Edit</a></td>
                 <td><a href="javascript:delete_ok('${u.getSeq()}')">Delete</a></td>
             </tr>
