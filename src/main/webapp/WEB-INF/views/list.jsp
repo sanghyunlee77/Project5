@@ -19,7 +19,7 @@
         <tr>
             <th>Id</th>
             <th>MName</th>
-            <th>FName</th>
+            <th>PName</th>
             <th>Picture</th>
             <th>Kind</th>
             <th>PNumber</th>
@@ -34,7 +34,7 @@
             <tr>
                 <td>${u.getSeq()}</td>
                 <td>${u.getMname()}</td>
-                <td>${u.getFname()}</td>
+                <td>${u.getPname()}</td>
                 <td>${u.getPicture()}</td>
                 <td>${u.getKind()}</td>
                 <td>${u.getPnumber()}</td>
