@@ -18,15 +18,13 @@
     <table class="table table-striped table-sm">
         <tr>
             <th>Id</th>
-            <th>MName</th>
-            <th>FName</th>
-            <th>Picture</th>
-            <th>Kind</th>
-            <th>PNumber</th>
-            <th>Comeday</th>
-            <th>Byeday</th>
-            <th>Regdate</th>
-            <th>Contents</th>
+            <th>주인 성함</th>
+            <th>애완동물 이름</th>
+            <th>사진</th>
+            <th>종</th>
+            <th>휴대전화 번호</th>
+            <th>입원날짜</th>
+            <th>퇴원날짜</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -34,14 +32,12 @@
             <tr>
                 <td>${u.getSeq()}</td>
                 <td>${u.getMname()}</td>
-                <td>${u.getFname()}</td>
+                <td>${u.getPname()}</td>
                 <td>${u.getPicture()}</td>
                 <td>${u.getKind()}</td>
                 <td>${u.getPnumber()}</td>
                 <td>${u.getComeday()}</td>
                 <td>${u.getByeday()}</td>
-                <td><fmt:formatDate value="${u.getRegdate()}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                <td>${u.getContents()}</td>
                 <td><a href="editpost/${u.getSeq()}">Edit</a></td>
                 <td><a href="javascript:delete_ok('${u.getSeq()}')">Delete</a></td>
             </tr>
